@@ -1,0 +1,11 @@
+services:
+  agent:
+    image: newrelic/infrastructure:1.66.1
+    container_name: newrelic-infra-agent
+    network_mode: host
+    cap_add:
+      - SYS_PTRACE
+    volumes:
+      - "/:/host:ro"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "./newrelic-infra.yml:/etc/newrelic-infra.yml:ro"
